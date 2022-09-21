@@ -1,0 +1,17 @@
+{
+  "name": "VoteMap",
+  "version": "1.0.0",
+  "description": "VoteMap for Max for Live",
+  "main": "server.js",
+  "scripts": {},
+  "author": "Jacob C. Stucki III | www.jcs3designs.com",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "chart.js": "^2.9.3",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.4.0",
+    "utf-8-validate": "^5.0.2"
+  }
+}

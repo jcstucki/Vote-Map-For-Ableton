@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>VoteMap Client Interface</title>
+		<meta http-equiv ='content-type' content = 'txt/html; charset=utf-8'></meta>   
+		<script src="/socket.io/socket.io.js"></script>
+		<style type="text/css">
+			/*.red_button {
+				background-color:#FF2D00;
+				border:2px solid #000000;
+				color:white;
+				padding: 20px 50px;
+				text-align:center;
+				display:inline-block;
+				font-size:16px;
+			}
+			.red_button:active{
+				transform: translateY(4px);
+			}
+
+			.blue_button {
+				background-color:#001FFF;
+				border:2px solid #000000;
+				color:white;
+				padding: 20px 50px;
+				text-align:center;
+				display:inline-block;
+				font-size:16px;
+			}
+			.blue_button:active{
+				transform: translateY(4px);
+			}
+			.green_button {
+				background-color:#13FF00;
+				border:2px solid #000000;
+				color:white;
+				padding: 20px 50px;
+				text-align:center;
+				display:inline-block;
+				font-size:16px;
+			}
+			.green_button:active{
+				transform: translateY(4px);
+			}*/
+			.slider{
+				-webkit-appearance: none;
+				appearance: none;
+				width: 75%;	
+				height: 200px;
+				background: #d3d3d3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<div><input type="range" min= '0' max = '100' value = '50' class ='slider' id = 'slider1'>
+			</div>
+			<div><input type="range" min= '0' max = '100' value = '50' class ='slider' id = 'slider2'>
+			</div>
+			<div><input type="range" min= '0' max = '100' value = '50' class ='slider' id = 'slider3'>
+			</div>
+			<script>
+				var socket = io();
+				
+				socket.on('connect',()=>{
+					console.log('Connected to server')
+					socket.emit('test')
+				})
+
+				var slider1 = document.getElementById('slider1')
+				var slider2 = document.getElementById('slider2')
+				var slider3 = document.getElementById('slider3')
+
+				slider1.oninput = function(){
+					socket.emit('slider1',this.value)
+					console.log(this.value)
+				}
+				slider2.oninput = function(){
+					socket.emit('slider2',this.value)
+					console.log(this.value)
+				}
+				slider3.oninput = function(){
+					socket.emit('slider3',this.value)
+					console.log(this.value)
+				}
+
+			</script>
+			<small>
+				<p>© Jacob C. Stucki III </p>
+				<p>www.jcs3designs.com</p>
+			</small>
+		</center>
+	</body>
+</html>

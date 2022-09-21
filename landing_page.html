@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>Max/MSP VoteMap</title>
+		<meta http-equiv ='content-type' content = 'txt/html; charset=utf-8'></meta>   
+		<style type="text/css">
+			.answer {
+				width: 500;
+				font-family: helvetica;
+				font-size: 11;
+			}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<form style='font-family: helvetica;'>
+				<label for='room_code'>Room Code:</label>
+				<input type="text" name="room_code">
+				<br><br>
+				<input type="submit" name="Enter">
+			</form>
+			<a href="localhost:8080/client_vote_page.html">BYPASS ROOM CODE</a>
+			<hr><br>
+
+
+			<b style='font-family: helvetica'>What is this?</b>
+			<br>
+			<p class='answer'>
+			This is the landing page for VoteMap, a live performance tool built for MaxMSP and Max 4 Live (Ableton).
+			<br><br>
+			From here you can enter a room number given to you by your host/performer, and be led to a page where you are able to democratically vote for parameters that the host has assigned in their Max patch or Ableton performance.
+			<br><br>
+			With access to the Max patch, or M4L Ableton device, you are able to map (link) values voted on by clients to parameters within your Max patch or Ableton set. 
+			<br><br>
+			For example, clients can vote between three given options (ex. red/green/blue) which are then assigned within Max/Ableton to the output level of three oscillators with different timbres. 
+			<br><br>
+			This allows for direct, near-instantaneous, interaction between audience, and performer. 
+			</p>
+
+			<br><br><br>
+			
+			<b style='font-family: helvetica'>How does this work?</b>
+			<br>
+			<p class='answer'>
+			VoteMap's server architecture is unix based, running on a DigitalOcean droplet. It's webserver is nginx, with a node.js backend. Node.js was chosen due to its integration with Max/MSP via the node.script max object, and it's event driven architecture. Communication with Max, the webserver, and clients is processed by socket.io, providing fast, efficient, event based communication between the three(+) nodes.
+			<br><br>
+			For each "room," each client is allowed one(1) vote per "section", with multiple "sections" being configured by the Max host application (soonTM). Clients may vote at any time, and change their vote as often or as little as they like. 
+			<br><br>
+			The server keeps track of the unique client id, given by socket.io. Each updated/new vote, the server counts current votes and calculates a normalized percentage, which is then sent to the Max/M4L device that is the "host" of the room. In reality, the Max device is just another client, with special functionality, and it's presence does not count towards the vote percentage.
+			<br><br>
+			From there, it is simply up to the max user to assign the values output by the script(within Max), or assign the values to parameters via the GUI (M4L device) via the simple Map button on the GUI.
+			</p>
+
+			<br><br><br>
+
+			<b style='font-family: helvetica'>When was this made?</b>
+			<br>
+			<p class='answer'>
+			The initial concept was thought up during the 2019-2020 COVID pandemic, with a working implementation being created in Jan/Feb 2021. It is loosely based on another Max device by the author, "API2MIDI" which allowed mapping of comments on the website Reddit, to MIDI notes and data. 
+			</p>
+
+
+			<br><br><br>
+
+			<b style='font-family: helvetica'>Where can this be used?</b>
+			<br>
+			<p class='answer'>
+			Clients can connect from anywhere where there is a live web-connection, as the only data being downloaded from the server is basic HTML/CSS/PHP and the socket.io framework for Javascript. It is so lightweight, that clients can connect via their phones, making this an incredibly powerful tool for live performance. (Hey! Finally, a good use of phones during concerts!)
+			</p>
+
+			<br><br><br>
+
+
+			<b style='font-family: helvetica'>Why was this made?</b>
+			<br>
+			<p class='answer'>
+			Because I hadn't heard of anything like it, and I haven't seen any musicians or artists utilizing phones in this manner. 
+			<br><br>
+			"It's the new thing mannnnnn..."
+			<br><br>
+			There has always been a history of audience-participation in musical performance. From call & response, to "section" based assignment of vocals, crowdsurfing musicians, to "Play Freebird!" chants. While these examples use the musicians as an intermediary, they are more static than what this tool offers. VoteMap offers a "closer" to dynamic music experience than the previous examples. 
+			<br><br>
+			Typically, these participatory music experiences do not cater to the individual audience member, only to the broader crowd, and do not allow those who appreciate music but do not have any musical tallent to create music. 
+			<br><br>
+			With this tool, the non-musically inclined, can directly interact with the song/performance (this can even be used for lights), and say that they had a direct involvement with the performance (more direct than previous examples, I argue). 
+			<br><br>
+			Each performance will be different, each song unique to the time and place. No singular song be repeated perfectly every time. 
+			<br><br>
+			You'll never know what you'll get (mostly ;) )
+			</p>
+
+			<br><br><br>
+
+			<b style='font-family: helvetica'>Who created this?</b>
+			<br>
+			<p class='answer'>
+			My name is Jake, I typically program in python & node.js. I started out learning BASIC on my TI-84. 
+			I went to school for Live & Installed Sound at Columbia College Chicago, and now am enrolled in a Masters program at Northwestern for Sound Arts & Industries.
+
+			I love sound, you can find my portfolio website listed at the bottom of this page. :)
+			</p>
+
+
+			<br><hr>
+
+			<small>
+				<p style='font-family: helvetica;'>© Jacob C. Stucki III </p>
+				<p style='font-family: helvetica;'>www.jcs3designs.com</p>
+			</small>
+		</center>
+	</body>
+</html>
